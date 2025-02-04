@@ -6,6 +6,9 @@ const app = express();
 const PORT = 3000;
 const URL = "https://www.indiansuperleague.com/schedule-fixtures";
 
+app.get("/",(req, res)=>{
+  res.json({message: "API working"});
+})
 app.get("/isl/scores", async (req, res) => {
   try {
     const { data } = await axios.get(URL);
