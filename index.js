@@ -11,7 +11,7 @@ app.get("/",(req, res)=>{
     "Finished match results": "/isl/finished",
     "Live Match score": "/isl/live",
     "Upcoming Matches": "/isl/upcoming",
-    "message": "Goto /api/scores to access the above 3 all at once"
+    "message": "Goto /isl/scores to access the above 3 all at once"
   });
 })
 app.get("/isl/scores", async (req, res) => {
