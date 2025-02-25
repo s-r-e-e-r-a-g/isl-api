@@ -7,7 +7,12 @@ const PORT = 3000;
 const URL = "https://www.indiansuperleague.com/schedule-fixtures";
 
 app.get("/",(req, res)=>{
-  res.json({message: "API working"});
+  res.json({
+    "Finished match results": "/isl/finished",
+    "Live Match score": "/isl/live",
+    "Upcoming Matches": "/isl/upcoming",
+    "message": "Goto /api/scores to access the above 3 all at once"
+  });
 })
 app.get("/isl/scores", async (req, res) => {
   try {
