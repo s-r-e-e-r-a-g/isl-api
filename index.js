@@ -51,6 +51,7 @@ app.get("/isl/scores", async (req, res) => {
       if (status === "FT") {
         matches.finished.push(matchData);
       } else if (status.includes("'")) { // Check if the status contains a minute marker (e.g., "4'")
+        matchData.time = status; // Add the live match time to the match data
         matches.live.push(matchData);
       } else {
         matches.upcoming.push(matchData);
