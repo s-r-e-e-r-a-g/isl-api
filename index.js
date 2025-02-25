@@ -35,14 +35,14 @@ app.get("/isl/scores", async (req, res) => {
       const teamA = {
         name: $(element).find(".team.team-a .name.full").text().trim(),
         shortName: $(element).find(".team.team-a .name.short").text().trim(),
-        logo: "https://www.indiansuperleague.com" + $(element).find(".team.team-a img").attr("src"),
+        logo: "https://www.indiansuperleague.com" + $(element).find(".team.team-a img").attr("data-src"), // Use data-src for lazy-loaded images
         score: $(element).find(".team.team-a .score").text().trim() || "N/A"
       };
 
       const teamB = {
         name: $(element).find(".team.team-b .name.full").text().trim(),
         shortName: $(element).find(".team.team-b .name.short").text().trim(),
-        logo: "https://www.indiansuperleague.com" + $(element).find(".team.team-b img").attr("src"),
+        logo: "https://www.indiansuperleague.com" + $(element).find(".team.team-b img").attr("data-src"), // Use data-src for lazy-loaded images
         score: $(element).find(".team.team-b .score").text().trim() || "N/A"
       };
 
