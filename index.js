@@ -6,14 +6,15 @@ const app = express();
 const PORT = 3000;
 const URL = "https://www.indiansuperleague.com/schedule-fixtures";
 
-app.get("/",(req, res)=>{
+app.get("/", (req, res) => {
   res.json({
     "Finished match results": "/isl/finished",
     "Live Match score": "/isl/live",
     "Upcoming Matches": "/isl/upcoming",
     "message": "Goto /isl/scores to access the above 3 all at once"
   });
-})
+});
+
 app.get("/isl/scores", async (req, res) => {
   try {
     const { data } = await axios.get(URL);
@@ -37,7 +38,7 @@ app.get("/isl/scores", async (req, res) => {
         logo: "https://www.indiansuperleague.com" + $(element).find(".team.team-a img").attr("src"),
         score: $(element).find(".team.team-a .score").text().trim() || "N/A"
       };
-      
+
       const teamB = {
         name: $(element).find(".team.team-b .name.full").text().trim(),
         shortName: $(element).find(".team.team-b .name.short").text().trim(),
@@ -49,7 +50,7 @@ app.get("/isl/scores", async (req, res) => {
 
       if (status === "FT") {
         matches.finished.push(matchData);
-      } else if (status.includes("Live")) {
+      } else if (status.includes("'")) { // Check if the status contains a minute marker (e.g., "4'")
         matches.live.push(matchData);
       } else {
         matches.upcoming.push(matchData);
