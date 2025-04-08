@@ -1,6 +1,16 @@
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const cron = require("node-cron");
+
+cron.schedule('* * * * *', async () => {
+  try {
+    //await axios.get('https://isl-api.onrender.com/');
+    console.log('Pinged');
+  } catch (err) {
+    console.error('Self-ping failed:', err.message);
+  }
+});
 
 const app = express();
 const PORT = 3000;
