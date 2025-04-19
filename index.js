@@ -3,7 +3,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const cron = require("node-cron");
 
-cron.schedule('*/10 * * * *', async () => {
+cron.schedule('0 12 * * *', async () => {
   try {
     await axios.get('https://isl-api.onrender.com/');
     console.log('Pinged');
